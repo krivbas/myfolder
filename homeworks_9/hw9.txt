@@ -1,0 +1,37 @@
+create database MyBase;
+
+create table Countries
+(
+    id INTEGER NOT NULL PRIMARY KEY,
+    name varchar(255),
+    territory varchar(255),
+    population varchar(255),
+    currency varchar(255)
+)
+
+insert into Countries (name, territory, population, currency)
+values ("Украина", "1316 км с запада на восток и 740 км с севера на юг", "украинци", "гривня");
+
+insert into Countries (name, territory, population, currency)
+values ("Польща", "312 679 км", "поляки", "злотый");
+
+insert into Countries (name, territory, population, currency)
+values ("Германия", "357 021 км", "немцы", "евро");
+
+alter table Countries add "capital"
+
+
+update Countries set capital="Kyiv" where name="Украина";
+
+update Countries set capital="Варшава" where name="Польща";
+
+update Countries set capital="Берлин" where name="Германия";
+
+
+create table Continents
+(
+    id INTEGER NOT NULL PRIMARY KEY,
+    name varchar(255),
+    climate varchar(255),
+    id_countries INTEGER NOT NULL FOREIGN KEY REFERENCES Countries(id)
+);
